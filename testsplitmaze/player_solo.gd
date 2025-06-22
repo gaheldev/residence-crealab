@@ -4,7 +4,7 @@ enum {RUN,WALK,IDLE}
 var curAnim=IDLE
 @export var blend_speed=15
 
-const SPEED = 15.0
+const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 var jump:bool=false
 var direction:Vector3=Vector3.ZERO
