@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c685oq1mmmygr"]
+
+[sub_resource type="TextMesh" id="TextMesh_vloqt"]
+text = "J1"
+font_size = 127
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vloqt"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.926299, 2.5028e-06, 1.54018e-06, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="TextMesh" id="TextMesh_dy34b"]
+text = "J2"
+font_size = 127
+
+[sub_resource type="TextMesh" id="TextMesh_0he13"]
+text = "J3"
+font_size = 127
+
+[sub_resource type="TextMesh" id="TextMesh_k1bjl"]
+text = "J4"
+font_size = 127
+
+[node name="UI_controler" type="Node3D"]
+
+[node name="controler2" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_vloqt")
+surface_material_override/0 = SubResource("StandardMaterial3D_vloqt")
+
+[node name="controler3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27129, 0)
+mesh = SubResource("TextMesh_dy34b")
+surface_material_override/0 = SubResource("StandardMaterial3D_vloqt")
+
+[node name="controler4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53538, 0)
+mesh = SubResource("TextMesh_0he13")
+surface_material_override/0 = SubResource("StandardMaterial3D_vloqt")
+
+[node name="controler5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78263, 0)
+mesh = SubResource("TextMesh_k1bjl")
+surface_material_override/0 = SubResource("StandardMaterial3D_vloqt")

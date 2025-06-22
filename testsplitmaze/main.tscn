@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://8a4lkt2okh2y"]
+[gd_scene load_steps=10 format=3 uid="uid://8a4lkt2okh2y"]
 
 [ext_resource type="Script" uid="uid://dalckhbnpxdft" path="res://camera_follow.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c685oq1mmmygr" path="res://prefabs/ui_controler.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://drfjaqhpb63sp" path="res://prefabs/map.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://bdn0c6j27d6bn" path="res://prefabs/ui_controler.gd" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cr86obmsl2ola" path="res://control_manager2.gd" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://0ydam5sjqloo" path="res://prefabs/player.tscn" id="4_lquwl"]
 
@@ -80,6 +82,14 @@ horizontal_alignment = 1
 [node name="ColorRect_p2" type="ColorRect" parent="UI/HBoxContainer/VBoxContainer_p2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+
+[node name="UI_players" type="Node3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="UI_controler" parent="UI_players" node_paths=PackedStringArray("to_follow", "Control_manager") instance=ExtResource("2_lquwl")]
+script = ExtResource("3_7mycd")
+to_follow = NodePath("../../GridContainer/SubViewportContainer/SubViewport/player1")
+Control_manager = NodePath("../../ControlManager")
 
 [node name="level" type="Node3D" parent="."]
 
