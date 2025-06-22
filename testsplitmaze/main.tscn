@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://8a4lkt2okh2y"]
 
-[ext_resource type="Script" uid="uid://dalckhbnpxdft" path="res://camera_follow.gd" id="2_1bvp3"]
+[ext_resource type="Script" path="res://camera_follow.gd" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://drfjaqhpb63sp" path="res://prefabs/map.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr86obmsl2ola" path="res://control_manager2.gd" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://0ydam5sjqloo" path="res://prefabs/player.tscn" id="4_lquwl"]
@@ -20,10 +20,9 @@ glow_enabled = true
 
 [node name="Node3D" type="Node3D"]
 
-[node name="ControlManager" type="Node" parent="." node_paths=PackedStringArray("player1", "player2")]
+[node name="ControlManager" type="Node" parent="." node_paths=PackedStringArray("characters")]
 script = ExtResource("3_h2yge")
-player1 = NodePath("../GridContainer/SubViewportContainer/SubViewport/player1")
-player2 = NodePath("../GridContainer/SubViewportContainer2/SubViewport/player2")
+characters = [NodePath("../GridContainer/SubViewportContainer/SubViewport/player1"), NodePath("../GridContainer/SubViewportContainer2/SubViewport/player2"), NodePath("../GridContainer/SubViewportContainer3/SubViewport/player3"), NodePath("../GridContainer/SubViewportContainer4/SubViewport/player4")]
 
 [node name="UI" type="Control" parent="."]
 z_index = 20
