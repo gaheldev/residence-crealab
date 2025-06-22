@@ -22,19 +22,20 @@ var p2_control=-1
 
 func _ready() -> void:
 	print(player_list)
+	
 func _input(event: InputEvent) -> void:	# Handle jump.
 	if Input.is_action_just_pressed("p1_X"):
-		$"../Control/HBoxContainer/VBoxContainer_p1/ColorRect_p1".color=Color(1, 0, 0, 1)
+		$"../UI/HBoxContainer/VBoxContainer_p1/ColorRect_p1".color=Color(1, 0, 0, 1)
 		p1_control=0
 	if Input.is_action_just_pressed("p1_Y"):
-		$"../Control/HBoxContainer/VBoxContainer_p1/ColorRect_p1".color=Color(0, 0, 1, 1)
+		$"../UI/HBoxContainer/VBoxContainer_p1/ColorRect_p1".color=Color(0, 0, 1, 1)
 		p1_control=1
 		
 	if Input.is_action_just_pressed("p2_X"):
-		$"../Control/HBoxContainer/VBoxContainer_p2/ColorRect_p2".color=Color(1, 0, 0, 1)
+		$"../UI/HBoxContainer/VBoxContainer_p2/ColorRect_p2".color=Color(1, 0, 0, 1)
 		p2_control=0
 	if Input.is_action_just_pressed("p2_Y"):
-		$"../Control/HBoxContainer/VBoxContainer_p2/ColorRect_p2".color=Color(0, 0, 1, 1)
+		$"../UI/HBoxContainer/VBoxContainer_p2/ColorRect_p2".color=Color(0, 0, 1, 1)
 		p2_control=1
 
 

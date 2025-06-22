@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://8a4lkt2okh2y"]
+[gd_scene load_steps=7 format=3 uid="uid://8a4lkt2okh2y"]
 
-[ext_resource type="Texture2D" uid="uid://dfx3ldxtfgkko" path="res://texture/floor.jpg" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bp455y6bn4o21" path="res://player_solo.gd" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ddjihrj1k47tr" path="res://prefabs/map.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr86obmsl2ola" path="res://control_manager2.gd" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cv1lcgsd8hjea" path="res://level/lvl.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://0ydam5sjqloo" path="res://prefabs/player.tscn" id="4_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,40 +16,6 @@ background_mode = 2
 sky = SubResource("Sky_ig7tw")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
-size = Vector2(400, 400)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-albedo_texture = ExtResource("1_ig7tw")
-uv1_scale = Vector3(10, 10, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
-size = Vector3(400, 1, 400)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_h2yge"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
-albedo_color = Color(0.407843, 0.623529, 1, 1)
-emission_enabled = true
-emission = Color(0, 0.537255, 0.921569, 1)
-emission_energy_multiplier = 10.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
-albedo_color = Color(1, 0.0392157, 0.0784314, 1)
-emission_enabled = true
-emission = Color(0.854902, 0, 0.607843, 1)
-emission_energy_multiplier = 7.11
-
-[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
-albedo_color = Color(0, 0, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -120,7 +85,7 @@ layout_mode = 2
 [node name="camera&light" type="Node3D" parent="level"]
 
 [node name="Camera3D" type="Camera3D" parent="level/camera&light"]
-transform = Transform3D(0.999945, 0.0104779, -0.000649229, 0, 0.0618431, 0.998086, 0.010498, -0.998031, 0.0618397, -2.7528, 66.0337, -12.1621)
+transform = Transform3D(0.999997, -0.00203419, 0.00160626, 0, 0.619722, 0.784822, -0.00259191, -0.784819, 0.61972, 1.05577, 11.6434, 13.3992)
 fov = 50.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="level/camera&light"]
@@ -130,55 +95,10 @@ environment = SubResource("Environment_0xm2m")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="level"]
+[node name="MAP" parent="level" instance=ExtResource("3_1bvp3")]
 
-[node name="floor" type="MeshInstance3D" parent="level/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.84962, 0)
-mesh = SubResource("PlaneMesh_7dm0k")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+[node name="player" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.604, 0.797785, -0.271)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_h2yge")
-
-[node name="goal" type="Node3D" parent="level"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="level/goal"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, -2.87772, 0, -50.9222)
-mesh = SubResource("CylinderMesh_h2yge")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="level/goal"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 6.37402, 0, -50.9222)
-mesh = SubResource("CylinderMesh_h2yge")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7mycd")
-
-[node name="lvl" parent="level" instance=ExtResource("4_1bvp3")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.755831, -1.03637, -21.5398)
-
-[node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537681, 0)
-script = ExtResource("2_h2yge")
-
-[node name="skinperso" type="MeshInstance3D" parent="player"]
-mesh = SubResource("BoxMesh_ig7tw")
-skeleton = NodePath("../../level/StaticBody3D/floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
-shape = SubResource("BoxShape3D_0xm2m")
-
-[node name="player2" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61815, 0.537681, 0)
-script = ExtResource("2_h2yge")
-
-[node name="skinperso" type="MeshInstance3D" parent="player2"]
-mesh = SubResource("BoxMesh_ig7tw")
-skeleton = NodePath("../../level/StaticBody3D/floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player2"]
-shape = SubResource("BoxShape3D_0xm2m")
+[node name="player2" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.583, 0.658903, -0.539)

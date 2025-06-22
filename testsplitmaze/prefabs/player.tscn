@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://0ydam5sjqloo"]
+
+[ext_resource type="Script" uid="uid://bp455y6bn4o21" path="res://player_solo.gd" id="1_umsav"]
+[ext_resource type="PackedScene" uid="uid://cre0uaw5uhgnt" path="res://ressources/animations/mixamec.tscn" id="2_4dohe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_umsav")
+
+[node name="skinperso" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../../level/StaticBody3D/floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="AuxScene" parent="." instance=ExtResource("2_4dohe")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.87, 0)
